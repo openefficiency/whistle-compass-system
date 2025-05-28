@@ -1,12 +1,20 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Phone } from "lucide-react";
+import { Mic } from "lucide-react";
 import HomeHeader from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
 import VoiceAssistant from "@/components/VoiceAssistant";
+import { useVoiceAI } from "@/hooks/useVoiceAI";
 
 const Index = () => {
+  const { startListening, isSupported } = useVoiceAI();
+
+  const handleSpeakUpClick = () => {
+    if (isSupported) {
+      startListening();
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       <HomeHeader />
@@ -24,10 +32,11 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="bg-teal-500 hover:bg-teal-600 text-white"
-                  onClick={() => window.open(`tel:${import.meta.env.VITE_VAPI_PHONE_NUMBER || "+1234567890"}`, "_blank")}
+                  onClick={handleSpeakUpClick}
+                  disabled={!isSupported}
                 >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Speak Up Now
+                  <Mic className="mr-2 h-5 w-5" />
+                  {isSupported ? "Speak Up Now" : "Voice Not Supported"}
                 </Button>
               </div>
               <div className="md:w-1/2">
