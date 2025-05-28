@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Phone } from "lucide-react";
 import HomeHeader from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
+import VoiceAssistant from "@/components/VoiceAssistant";
 
 const Index = () => {
   return (
@@ -104,6 +105,9 @@ const Index = () => {
       </main>
       
       <Footer />
+      
+      {/* Voice AI Assistant */}
+      <VoiceAssistant />
     </div>
   );
 };
