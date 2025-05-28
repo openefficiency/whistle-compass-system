@@ -1,3 +1,4 @@
+
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -30,7 +31,7 @@ export const useVoiceAI = () => {
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
 
   const { toast } = useToast();
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<any>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
 
   // Check browser support
