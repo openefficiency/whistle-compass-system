@@ -1,16 +1,17 @@
+"use client"
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Mic, MicOff, Volume2, VolumeX, Settings, MessageCircle } from 'lucide-react';
-import { useVoiceAI } from '@/hooks/useVoiceAI';
-import { cn } from '@/lib/utils';
-import VoiceSettings from './VoiceSettings';
-import ConversationModal from './ConversationModal';
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Mic, MicOff, Volume2, VolumeX, Settings, MessageCircle } from "lucide-react"
+import { useVoiceAI } from "@/hooks/useVoiceAI"
+import { cn } from "@/lib/utils"
+import VoiceSettings from "./VoiceSettings"
+import ConversationModal from "./ConversationModal"
 
-const VoiceAssistant = () => {
-  const [showSettings, setShowSettings] = useState(false);
-  const [showConversation, setShowConversation] = useState(false);
-  
+export default function VoiceAssistant() {
+  const [showSettings, setShowSettings] = useState(false)
+  const [showConversation, setShowConversation] = useState(false)
+
   const {
     isListening,
     isSpeaking,
@@ -24,29 +25,27 @@ const VoiceAssistant = () => {
     voiceSettings,
     availableVoices,
     setVoiceSettings,
-    clearConversation
-  } = useVoiceAI();
+    clearConversation,
+  } = useVoiceAI()
 
   if (!isSupported) {
     return (
       <div className="fixed bottom-6 right-6 bg-red-500/20 backdrop-blur-md border border-red-500/30 rounded-full p-4">
-        <div className="text-red-400 text-sm">
-          Voice features not supported
-        </div>
+        <div className="text-red-400 text-sm">Voice features not supported</div>
       </div>
-    );
+    )
   }
 
   const handleMicClick = () => {
     if (isListening) {
-      stopListening();
+      stopListening()
     } else {
       if (isSpeaking) {
-        stopSpeaking();
+        stopSpeaking()
       }
-      startListening();
+      startListening()
     }
-  };
+  }
 
   return (
     <>
@@ -80,7 +79,7 @@ const VoiceAssistant = () => {
             >
               <MessageCircle className="h-4 w-4" />
             </Button>
-            
+
             <Button
               onClick={() => setShowSettings(true)}
               size="sm"
@@ -107,14 +106,18 @@ const VoiceAssistant = () => {
             {/* Pulse Animation */}
             {(isListening || isSpeaking) && (
               <div className="absolute inset-0 rounded-full">
-                <div className={cn(
-                  "absolute inset-0 rounded-full animate-ping opacity-75",
-                  isListening ? "bg-red-500" : "bg-blue-500"
-                )} />
-                <div className={cn(
-                  "absolute inset-2 rounded-full animate-pulse opacity-50",
-                  isListening ? "bg-red-400" : "bg-blue-400"
-                )} />
+                <div
+                  className={cn(
+                    "absolute inset-0 rounded-full animate-ping opacity-75",
+                    isListening ? "bg-red-500" : "bg-blue-500",
+                  )}
+                />
+                <div
+                  className={cn(
+                    "absolute inset-2 rounded-full animate-pulse opacity-50",
+                    isListening ? "bg-red-400" : "bg-blue-400",
+                  )}
+                />
               </div>
             )}
 
@@ -127,7 +130,7 @@ const VoiceAssistant = () => {
                 "bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700",
                 "backdrop-blur-md border border-white/20",
                 isListening && "from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700",
-                isSpeaking && "from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700"
+                isSpeaking && "from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700",
               )}
             >
               {isListening ? (
@@ -159,7 +162,5 @@ const VoiceAssistant = () => {
         onClear={clearConversation}
       />
     </>
-  );
-};
-
-export default VoiceAssistant;
+  )
+}

@@ -1,4 +1,3 @@
-
 import { VapiCallRecord } from "@/types/vapi";
 
 const VAPI_API_KEY = import.meta.env.VITE_VAPI_API_KEY;
