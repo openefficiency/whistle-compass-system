@@ -1,64 +1,43 @@
-"use client"
-
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { MoonIcon, SunIcon } from "lucide-react"
-import { useTheme } from "@/components/theme-provider"
+import { Shield } from "lucide-react"
 
-export default function HomeHeader() {
-  const { theme, setTheme } = useTheme()
-
+const HomeHeader = () => {
   return (
-    <header className="border-b bg-white dark:bg-gray-950">
-      <div className="container flex h-16 items-center justify-between py-4">
-        <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6 text-teal-600"
-            >
-              <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0" />
-              <path d="M12 9v4" />
-              <path d="M12 16h.01" />
-            </svg>
-            <span className="text-xl font-bold">Aegis Whistle</span>
+    <header className="bg-white shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="flex items-center">
+            <Shield className="h-8 w-8 text-blue-800" />
+            <span className="ml-2 text-xl font-bold text-blue-900">WhistleGuard</span>
           </Link>
-        </div>
-        <nav className="hidden md:flex items-center gap-6">
-          <Link to="/" className="text-sm font-medium hover:underline">
-            Home
-          </Link>
-          <Link to="/follow-up" className="text-sm font-medium hover:underline">
-            Follow Up
-          </Link>
-          <Link to="/about" className="text-sm font-medium hover:underline">
-            About
-          </Link>
-          <Link to="/contact" className="text-sm font-medium hover:underline">
-            Contact
-          </Link>
-        </nav>
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-            {theme === "dark" ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-          <Link to="/login">
-            <Button variant="outline" size="sm">
-              Log In
-            </Button>
-          </Link>
-          <Link to="/signup" className="hidden md:block">
-            <Button size="sm">Sign Up</Button>
-          </Link>
+
+          <nav className="hidden md:flex items-center space-x-4">
+            <Link to="/" className="text-gray-700 hover:text-blue-800 font-medium">
+              Home
+            </Link>
+            <Link to="/about" className="text-gray-700 hover:text-blue-800 font-medium">
+              About
+            </Link>
+            <Link to="/faq" className="text-gray-700 hover:text-blue-800 font-medium">
+              FAQ
+            </Link>
+          </nav>
+
+          <div className="flex items-center space-x-2">
+            <Link to="/admin-login">
+              <Button variant="outline" className="text-blue-800 border-blue-800">
+                Admin Login
+              </Button>
+            </Link>
+            <Link to="/investigator-login">
+              <Button className="bg-blue-800 hover:bg-blue-900 text-white">Investigator Login</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </header>
   )
 }
+
+export default HomeHeader

@@ -1,112 +1,107 @@
 import { Link } from "react-router-dom"
+import { Shield } from "lucide-react"
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="border-t bg-white dark:bg-gray-950">
-      <div className="container py-8 md:py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-lg font-medium mb-4">Platform</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/follow-up" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Follow Up
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  About
-                </Link>
-              </li>
-            </ul>
+    <footer className="bg-gray-800 text-gray-300">
+      <div className="container mx-auto px-4 py-10">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="mb-8 md:mb-0">
+            <div className="flex items-center">
+              <Shield className="h-8 w-8 text-teal-500" />
+              <span className="ml-2 text-xl font-bold text-white">WhistleGuard</span>
+            </div>
+            <p className="mt-4 max-w-xs">
+              Empowering individuals to speak up against misconduct with confidence and security.
+            </p>
           </div>
-          <div>
-            <h3 className="text-lg font-medium mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/faq" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-medium mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Careers
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-medium mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/privacy" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Terms
-                </Link>
-              </li>
-              <li>
-                <Link to="/cookies" className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300">
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-white">Platform</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/" className="hover:text-teal-400">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-teal-400">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/faq" className="hover:text-teal-400">
+                    FAQ
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-white">Support</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/contact" className="hover:text-teal-400">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/support" className="hover:text-teal-400">
+                    Help Center
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacy" className="hover:text-teal-400">
+                    Privacy Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-white">Login</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/admin-login" className="hover:text-teal-400">
+                    Admin Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/investigator-login" className="hover:text-teal-400">
+                    Investigator Login
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center gap-2 mb-4 md:mb-0">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6 text-teal-600"
-            >
-              <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0" />
-              <path d="M12 9v4" />
-              <path d="M12 16h.01" />
-            </svg>
-            <span className="text-xl font-bold">Aegis Whistle</span>
+
+        <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p>&copy; {new Date().getFullYear()} WhistleGuard. All rights reserved.</p>
+          <div className="mt-4 md:mt-0">
+            <ul className="flex space-x-4">
+              <li>
+                <a href="#" className="hover:text-teal-400">
+                  Terms
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-teal-400">
+                  Privacy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-teal-400">
+                  Cookies
+                </a>
+              </li>
+            </ul>
           </div>
-          <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Aegis Whistle. All rights reserved.</p>
         </div>
       </div>
     </footer>
   )
 }
+
+export default Footer

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import VoiceSettings from "./VoiceSettings"
 import ConversationModal from "./ConversationModal"
 
-export default function VoiceAssistant() {
+const VoiceAssistant = () => {
   const [showSettings, setShowSettings] = useState(false)
   const [showConversation, setShowConversation] = useState(false)
 
